@@ -18,11 +18,13 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from recipe.views import signup
+from django.views.generic import RedirectView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('recipe/', include('recipe.urls', namespace='recipe')),
+    path('', RedirectView.as_view(url='recipe/', permanent=True)),
 ]
 
 urlpatterns += [

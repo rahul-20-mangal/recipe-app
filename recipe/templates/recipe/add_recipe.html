@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="conatiner" style="text-align: center;">
+    <h1>Add Recipe: </h1>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table style="margin: auto;">
+            {{ recipe_form.as_p }}
+
+            <h2>Add Ingredients</h2>
+            {{ ingredient_formset.management_form}}
+            {% for form in ingredient_formset.forms %}
+
+            <div class="table">
+                {{form.as_p}}
+            </div>
+            {% endfor %}
+    
+        </table>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+</div>
+{% endblock content %}
