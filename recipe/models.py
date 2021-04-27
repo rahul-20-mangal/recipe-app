@@ -28,8 +28,6 @@ class Recipe(TimeStampedModel):
 
     instructions = models.TextField()
     servings = models.IntegerField(default=0, blank=True)
-    preparation_time = models.TimeField(null=True, blank=True)
-    total_time = models.TimeField(null=True, blank=True)
     calories = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
