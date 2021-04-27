@@ -14,7 +14,7 @@ class Recipe(TimeStampedModel):
     )
     veg_or_other = models.CharField(max_length=10, choices=Veg_CHOICES)
 
-    image = models.ImageField(upload_to='image')
+    image = models.ImageField(upload_to='image', null=True)
     cuisine = models.CharField(max_length=2000, null=True, blank=True)
 
     difficulty_choices = (
