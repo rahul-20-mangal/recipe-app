@@ -32,6 +32,22 @@
                             <a class="nav-link" href="{% url 'recipe:list' %}">Recipes</a>
                         </li>
                     </ul>
+
+                    <div class="mx-3">
+                        {% if user.is_authenticated %}
+              
+                        <button class="btn btn-outline-secondary">{{ user.get_username }}</button>
+              
+                        <button class="btn btn-outline-info"><a class="nav-link" href="{% url 'logout' %}?next={{request.path}}">Logout</a></button>
+              
+                        {% else %}
+                        <button class="btn btn-outline-info"><a class="nav-link" href="{% url 'login' %}?next={{request.path}}">Login</a></button>
+              
+                        {% endif %}
+
+                        <button class="btn btn-outline-info"><a class="nav-link" href="{% url 'signup' %}?next={{request.path}}">Signup</a></button>
+                    </div>
+
                 </div>
 
             </div>

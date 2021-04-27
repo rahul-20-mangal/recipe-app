@@ -17,11 +17,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from recipe.views import signup
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('recipe/', include('recipe.urls', namespace='recipe')),
+]
+
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', signup, name='signup'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
