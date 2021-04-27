@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1>Recipe Detail</h1>
+    <p><b>Title: </b>{{ recipe.title }}</p>
+    <p><b>Author: </b>{{ recipe.author }}</p>
+    <p><b>Veg/Vegan/Non-Veg: </b>{{ recipe.veg_or_other }}</p>
+    <p><b>Image: </b><img src="{{ recipe.image.url }}" alt="image" height="200px" width="200px"></p>
+
+    {% if recipe.cuisine is not NULL %}
+        <p><b>Cuisine: </b>{{ recipe.cuisine }}</p>
+    {% endif %}
+
+    <h4>Ingredients: </h4>
+    <ul>
+    {% for ingredient in recipe.ingredient_set.all %}
+        <li>{{ingredient.name}} <b>Quantity:</b> {{ ingredient.quantity }} {{ ingredient.measurement }}</li>
+    {% endfor %}
+    </ul>
+
+    <p><b>Difficulty Level: </b>{{ recipe.difficulty_level }}</p>
+    <p><b>Instructions: </b>{{ recipe.instructions }}</p>
+    <p><b>Servings: </b>{{ recipe.servings }}</p>
+    <p><b>Calories: </b>{{ recipe.calories}}</p>
+
+</div>
+
+{% endblock content %}
