@@ -3,7 +3,7 @@ from recipe.models import Recipe
 
 
 def recipe_list(request):
-    recipe_list = Recipe.objects.all()
+    recipe_list = Recipe.objects.all().order_by('-created','-modified','calories')
 
     context = {
         "recipe_list": recipe_list,
